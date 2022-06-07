@@ -35,7 +35,9 @@ namespace Hazel
         {
             if (IPMode == IPMode.IPv4)
             {
-                return this.EndPoint.Address.Address;
+                var bytes = this.EndPoint.Address.GetAddressBytes();
+                return BitConverter.ToInt32(bytes, 0);
+                //return this.EndPoint.Address.Address;
             }
             else
             {
